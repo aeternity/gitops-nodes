@@ -5,6 +5,6 @@ description: A Helm chart for Kubernetes
 version: 0.2.0
 
 dependencies: # A list of the chart requirements (optional)
-  - name: app
+  - name: aenode
     version: 0.3.0
     repository: "file://../aenode"
