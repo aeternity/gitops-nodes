@@ -1,4 +1,4 @@
 aenode:
   image:
-    repository: aeternity
+    repository: aeternity/aeternity
     tag: latest
