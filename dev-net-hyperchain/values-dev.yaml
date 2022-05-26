@@ -1,3 +1,4 @@
-image:
-  repository: aeternity
-  tag: aeternity
+aenode:
+  image:
+    repository: aeternity
+    tag: aeternity
