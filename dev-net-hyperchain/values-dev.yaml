@@ -1,3 +1,3 @@
-app:
-  image:
-    tag: "master"
+image:
+  repository: aeternity
+  tag: aeternity
