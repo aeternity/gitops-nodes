@@ -2,8 +2,4 @@ aenode:
   image:
     repository: aeternity/aeternity
     tag: latest
-  probes:
-    rediness:
-      enabled: false
-    liveness:
-      enabled: false
+  type: StatefullSet

@@ -1,6 +1,6 @@
-{{- if .Values.type == "Deployment" }}
+{{- if .Values.type == "StatefullSet" }}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "aenode.fullname" . }}
   labels:
