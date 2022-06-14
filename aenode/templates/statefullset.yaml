@@ -6,6 +6,7 @@ metadata:
   labels:
     {{- include "aenode.labels" . | nindent 4 }}
 spec:
+  serviceName: "aenode"
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
