@@ -3,3 +3,4 @@ aenode:
     repository: aeternity/aeternity
     tag: latest
   type: StatefullSet
+  replicaCount: 3
