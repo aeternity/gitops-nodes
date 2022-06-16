@@ -13,6 +13,16 @@ spec:
   selector:
     matchLabels:
       {{- include "aenode.selectorLabels" . | nindent 6 }}
+  volumeClaimTemplates:
+  - metadata:
+      name: aenode
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: "gp2"
+      resources:
+        requests:
+          storage: 4Gi
+
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -22,15 +32,6 @@ spec:
       labels:
         {{- include "aenode.selectorLabels" . | nindent 8 }}
     spec:
-      volumeClaimTemplates:
-      - metadata:
-          name: aenode
-        spec:
-          accessModes: ["ReadWriteOnce"]
-          storageClassName: "gp2"
-          resources:
-            requests:
-              storage: 4Gi
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
