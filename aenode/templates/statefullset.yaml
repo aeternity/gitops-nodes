@@ -15,7 +15,7 @@ spec:
       {{- include "aenode.selectorLabels" . | nindent 6 }}
   volumeClaimTemplates:
   - metadata:
-      name: aenode
+      name: data
     spec:
       accessModes: ["ReadWriteOnce"]
       storageClassName: "gp2"
@@ -53,7 +53,7 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-          - name: aenode
+          - name: data
             mountPath: /home/aeternity/node/data
       {{- with .Values.nodeSelector }}
       nodeSelector:
