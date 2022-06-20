@@ -52,6 +52,9 @@ spec:
 
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - name: aenode
+            mountPath: /home/aeternity/node/data
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
