@@ -42,7 +42,16 @@ spec:
       initContainers:
         - name: ls
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["ls","-lah"]
+          command: ["ls","-lah","data"]
+        - name: who
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          command: ["whoami"]
+        - name: touch
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          command: ["touch","data/aaaa"]
+        - name: ls2
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          command: ["ls","-lah","data"]
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
