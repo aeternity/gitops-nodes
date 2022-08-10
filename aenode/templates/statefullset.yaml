@@ -40,12 +40,10 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
+
         - name: ls1
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           command: ["ls","-lah"]
-        - name: ls
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["ls","-lah","data"]
         - name: who
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           command: ["whoami"]
@@ -57,7 +55,8 @@ spec:
           command: ["ls","-lah","data"]
         - name: create-config
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["echo", "bm9kZV9jb25maWc6CiAgY2hhaW46CiAgICBwZXJzaXN0OiB0cnVlCiAgICBkYl9wYXRoOiAiL2RhdGEvZGIxIg==", "|", "base64", "-d", ">", "aeternity.yaml"        - name: ls2
+          command: ["echo", "bm9kZV9jb25maWc6CiAgY2hhaW46CiAgICBwZXJzaXN0OiB0cnVlCiAgICBkYl9wYXRoOiAiL2RhdGEvZGIxIg==", "|", "base64", "-d", ">", "/home/aeternity/node/aeternity.yaml"]
+        - name: ls1
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           command: ["ls","-lah"]
       containers:
