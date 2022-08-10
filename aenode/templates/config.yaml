@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: aeternity
-  namespace: default
+  namespace: aenodes
 data:
   aeternity.yaml: |
 node_config:
