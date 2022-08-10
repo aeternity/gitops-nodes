@@ -56,7 +56,7 @@ spec:
         - name: create-config
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           command: ["echo", "bm9kZV9jb25maWc6CiAgY2hhaW46CiAgICBwZXJzaXN0OiB0cnVlCiAgICBkYl9wYXRoOiAiL2RhdGEvZGIxIg==", "|", "base64", "-d", ">", "/home/aeternity/node/aeternity.yaml"]
-        - name: ls1
+        - name: ls2
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           command: ["ls","-lah"]
       containers:
