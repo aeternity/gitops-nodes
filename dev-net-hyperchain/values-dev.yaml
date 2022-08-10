@@ -1,8 +1,0 @@
-aenode:
-  image:
-    repository: aeternity/aeternity
-    tag: latest
-  type: StatefullSet
-  replicaCount: 1
-  podSecurityContext:
-    fsGroup: 1000
