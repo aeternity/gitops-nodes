@@ -39,26 +39,11 @@ spec:
       serviceAccountName: {{ include "aenode.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      initContainers:
+      volumes:
+        - name: config-volume
+          configMap:
+            name: aeternity
 
-        - name: ls1
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["ls","-lah"]
-        - name: who
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["whoami"]
-        - name: touch
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["touch","data/aaaa"]
-        - name: ls2
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["ls","-lah","data"]
-        - name: create-config
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["echo", "bm9kZV9jb25maWc6CiAgY2hhaW46CiAgICBwZXJzaXN0OiB0cnVlCiAgICBkYl9wYXRoOiAiL2RhdGEvZGIxIg==", "|", "base64", "-d", ">", "/home/aeternity/node/aeternity.yaml"]
-        - name: ls44
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["ls","-lah"]
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -75,6 +60,9 @@ spec:
           volumeMounts:
           - name: data
             mountPath: /data
+          - name: config-volume
+            mountPath: /home/aeternity/node/aeternity.yaml
+            subPath: aeternity.yaml
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
