@@ -43,15 +43,6 @@ spec:
         - name: config-volume
           configMap:
             name: aeternity
-      initContainers:
-
-        - name: ls1
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["ls","-lah"]
-        - name: cat
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ["cat","/home/aeternity/node/aeternity.yaml"]
-
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
