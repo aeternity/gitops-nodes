@@ -5,7 +5,7 @@ metadata:
   namespace: aenodes
 data:
   aeternity.yaml: |
-node_config:
-  chain:
-    persist: true
-    db_path: "/data/db1"
+    node_config:
+      chain:
+        persist: true
+        db_path: "/data/db1"
