@@ -3,7 +3,7 @@ app:
     repository: aeternity/aeternity
     tag: v6.5.2
   type: StatefullSet
-  replicaCount: 1
+  replicaCount: 2
   podSecurityContext:
     fsGroup: 1000
   service:
