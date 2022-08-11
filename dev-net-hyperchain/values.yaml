@@ -1,4 +1,4 @@
-aenode:
+app:
   image:
     repository: aeternity/aeternity
     tag: latest
@@ -6,3 +6,8 @@ aenode:
   replicaCount: 1
   podSecurityContext:
     fsGroup: 1000
+  secrets:
+    external:
+      remotePrefix: /k8s/dev-wgt7
+      values:
+        CONFIG: /apps/CONFIG
