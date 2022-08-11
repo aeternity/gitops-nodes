@@ -6,3 +6,9 @@ app:
   replicaCount: 1
   podSecurityContext:
     fsGroup: 1000
+  ingress:
+    enabled: "true"
+    hosts:
+      - host: "dev-hc-node.dev.aepps.com" # has to be changed/disscused
+        paths:
+          - path: "/"
