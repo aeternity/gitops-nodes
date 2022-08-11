@@ -1,7 +1,7 @@
 app:
   image:
     repository: aeternity/aeternity
-    tag: latest
+    tag: v6.5.2
   type: StatefullSet
   replicaCount: 1
   podSecurityContext:
