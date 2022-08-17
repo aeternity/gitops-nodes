@@ -2,26 +2,27 @@
 {{ $allVersions := append $versions (merge (dict "version" (default .Values.image.tag .Chart.AppVersion )) $) | compact | uniq }}
 {{- range $key, $val := $allVersions}}
 {{- if $val.version }}
+{{- range (untilStep 0 (int .Values.replicaCount) 1) }}
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
-  name: node-port
+  name: node-port-{{ . }}
   labels:
     {{- include "app.labels" $ | nindent 4 }}
     app.kubernetes.io/version: {{ $val.version }}
-    statefulset.kubernetes.io/pod-name: dev-net-hyperchain-app-1
+    statefulset.kubernetes.io/pod-name: dev-net-hyperchain-app-{{ . }}
 spec:
   externalTrafficPolicy: Cluster
   selector:
     {{- include "app.selectorLabels" $ | nindent 4 }}
     app.kubernetes.io/version: {{ $val.version }}
-    statefulset.kubernetes.io/pod-name: dev-net-hyperchain-app-1
+    statefulset.kubernetes.io/pod-name: dev-net-hyperchain-app-{{ . }}
   type: NodePort
   ports:
   - protocol: TCP
     port: 3013
     targetPort: 3013
+{{- end }}
 {{- end }}
 {{- end }}
