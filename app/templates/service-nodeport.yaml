@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-port
+spec:
+  externalTrafficPolicy: Cluster
+  selector:
+  labels:
+    {{- include "app.labels" $ | nindent 4 }}
+    app.kubernetes.io/version: {{ $val.version }}
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 3013
+    targetPort: 3013
