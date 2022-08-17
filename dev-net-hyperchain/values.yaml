@@ -8,6 +8,9 @@ app:
     fsGroup: 1000
   service:
     port: 3013
+  resources:
+    limits:
+      cpu: 1
   ingress:
     enabled: "true"
     hosts:
