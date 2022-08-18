@@ -14,7 +14,7 @@ metadata:
     app.kubernetes.io/version: {{ $val.version }}
     statefulset.kubernetes.io/pod-name: dev-net-hyperchain-app-{{ . }}
 spec:
-  externalTrafficPolicy: Cluster
+  externalTrafficPolicy: Local
   selector:
     {{- include "app.selectorLabels" $ | nindent 4 }}
     app.kubernetes.io/version: {{ $val.version }}
