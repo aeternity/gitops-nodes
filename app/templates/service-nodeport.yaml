@@ -23,6 +23,7 @@ spec:
   - protocol: TCP
     port: 3013
     targetPort: 3013
+    nodePort: 3013
 {{- end }}
 {{- end }}
 {{- end }}
