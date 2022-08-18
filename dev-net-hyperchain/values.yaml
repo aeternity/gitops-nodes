@@ -17,3 +17,8 @@ app:
       - host: "dev-hc-node.dev.aepps.com" # has to be changed/disscused
         paths:
           - path: "/"
+  tolerations:
+  - key: "public"
+    operator: "Equal"
+    value: "yes"
+    effect: "NoSchedule"
