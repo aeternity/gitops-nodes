@@ -26,4 +26,4 @@ app:
     effect: "NoSchedule"
   nodeSelector:
     public: "yes"
-  nodeport: "no"
+  nodeport: "yes"
