@@ -10,7 +10,7 @@ app:
     port: 3013
   resources:
     limits:
-      cpu: 1
+      cpu: 1.2
     requests:
       cpu: 1.1
   ingress:
