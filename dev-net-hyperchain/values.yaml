@@ -22,3 +22,5 @@ app:
     operator: "Equal"
     value: "yes"
     effect: "NoSchedule"
+  nodeSelector:
+    public: "yes"
