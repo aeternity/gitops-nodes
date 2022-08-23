@@ -19,13 +19,13 @@ spec:
       name: data
     spec:
       accessModes: ["ReadWriteOnce"]
-      storageClassName: "gp2"
+      storageClassName: "efs-sc"
       resources:
         requests:
           storage: 200Gi
       csi:
-        driver egs.csi.aws.com
-        volumeHandle:  fs-0949054d5e250a9b2
+        driver: egs.csi.aws.com
+        volumeHandle: fs-0949054d5e250a9b2
   template:
     metadata:
       {{- with .Values.podAnnotations }}
