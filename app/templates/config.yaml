@@ -6,6 +6,7 @@ metadata:
 data:
   aeternity.yaml: |
     chain:
+        db_path: /data/db1
         garbage_collection:
             enabled: true
             history: 500
