@@ -1,29 +1,28 @@
 {{- if eq .Values.type "StatefullSet" }}
 apiVersion: apps/v1
 kind: StatefulSet
-
 metadata:
-  name: {{ include "aenode.fullname" . }}
+  name: {{ include "app.fullname" . }}
   labels:
-    {{- include "aenode.labels" . | nindent 4 }}
+    {{- include "app.labels" . | nindent 4 }}
+    app.kubernetes.io/version: {{ .Values.image.tag }}
 spec:
-  serviceName: "aenode"
+  serviceName: {{ include "app.fullname" . }}
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "aenode.selectorLabels" . | nindent 6 }}
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      storageClassName: "gp2"
-      resources:
-        requests:
-          storage: 4Gi
-
+      {{- include "app.selectorLabels" . | nindent 6 }}
+#  volumeClaimTemplates:
+#  - metadata:
+#      name: data
+#    spec:
+#      accessModes: ["ReadWriteOnce"]
+#      storageClassName: "gp2"
+#      resources:
+#        requests:
+#          storage: 200Gi
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -31,13 +30,14 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "aenode.selectorLabels" . | nindent 8 }}
+        {{- include "app.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/version: {{ .Values.image.tag }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "aenode.serviceAccountName" . }}
+      serviceAccountName: {{ include "app.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
@@ -52,14 +52,14 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ $.Values.service.port }}
               protocol: TCP
 
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-          - name: data
-            mountPath: /data
+#          - name: data
+#            mountPath: /data
           - name: config-volume
             mountPath: /home/aeternity/node/aeternity.yaml
             subPath: aeternity.yaml
@@ -76,3 +76,4 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
 {{- end }}
+	
