@@ -60,7 +60,7 @@ spec:
           volumeMounts:
 #          - name: data
 #            mountPath: /data
-#          - name: config-volume
+          - name: config-volume
             mountPath: /home/aeternity/node/aeternity.yaml
             subPath: aeternity.yaml
       {{- with .Values.nodeSelector }}
