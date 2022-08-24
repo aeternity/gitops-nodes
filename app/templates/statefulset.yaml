@@ -58,8 +58,8 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-#          - name: data
-#            mountPath: /data
+          - name: data
+            mountPath: /data
           - name: config-volume
             mountPath: /home/aeternity/node/aeternity.yaml
             subPath: aeternity.yaml
@@ -76,4 +76,3 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
 {{- end }}
-	
