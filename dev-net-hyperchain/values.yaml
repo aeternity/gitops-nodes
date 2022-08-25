@@ -14,7 +14,7 @@ app:
     requests:
       cpu: 1.1
   ingress:
-    enabled: "true"
+    enabled: "false"
     hosts:
       - host: "dev-hc-node.dev.aepps.com" # has to be changed/disscused
         paths:
@@ -26,4 +26,4 @@ app:
     effect: "NoSchedule"
   nodeSelector:
     public: "yes"
-  nodeport: "yes"
+  nodeport: "no"
