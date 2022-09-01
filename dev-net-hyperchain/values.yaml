@@ -27,3 +27,5 @@ app:
   nodeSelector:
     public: "yes"
   nodeport: "no"
+  testing:
+    enabled: true
