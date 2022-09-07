@@ -77,4 +77,4 @@ spec:
     # The SnapshotClassName to use when creating the
     # snapshots. If omitted, the cluster default will
     # be used.
-    snapshotClassName: ebs-csi  # optional
+    snapshotClassName: csi-aws-vsc
