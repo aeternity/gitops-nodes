@@ -62,13 +62,13 @@ spec:
     # retained, specified in hours. (168h = 1 week)
     expires: "168h"  # optional
     # The maximum number of snapshots per PVC to keep
-    maxCount: 10  # optional
+    maxCount: 5  # optional
   # The cronspec (https://en.wikipedia.org/wiki/Cron#Overview)
   # that defines the schedule. It is interpreted with
   # respect to the UTC timezone. The following pre-defined
   # shortcuts are also supported: @hourly, @daily, @weekly,
   # @monthly, and @yearly
-  schedule: "*/10 * * * *"
+  schedule: "* * * * *"
   snapshotTemplate:
     # A set of labels can be added to each
     # VolumeSnapshot object
