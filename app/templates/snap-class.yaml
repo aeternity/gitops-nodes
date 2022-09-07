@@ -68,7 +68,7 @@ spec:
   # respect to the UTC timezone. The following pre-defined
   # shortcuts are also supported: @hourly, @daily, @weekly,
   # @monthly, and @yearly
-  schedule: "* * * * *"
+  schedule: "*/10 * * * *"
   snapshotTemplate:
     # A set of labels can be added to each
     # VolumeSnapshot object
@@ -78,3 +78,21 @@ spec:
     # snapshots. If omitted, the cluster default will
     # be used.
     snapshotClassName: csi-aws-vsc
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-snapshot-restored-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ebs-sc
+  resources:
+    requests:
+      storage: 4Gi
+  dataSource:
+    name: ebs-claim-hourly-202209072000
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
