@@ -56,7 +56,7 @@ spec:
     matchLabels:
       chain: "true"
   # Set to true to make the schedule inactive
-  #disabled: false  # optional
+  disabled: true  # optional
   retention:
     # The length of time a given snapshot should be
     # retained, specified in hours. (168h = 1 week)
