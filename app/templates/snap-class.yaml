@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: ebs-claim
   labels:
-    chain: true
+    chain: "true"
 spec:
   accessModes:
     - ReadWriteOnce
@@ -54,7 +54,7 @@ spec:
   # A LabelSelector to control which PVCs should be snapshotted
   claimSelector:
     matchLabels:
-      chain: true
+      chain: "true"
   # Set to true to make the schedule inactive
   #disabled: false  # optional
   retention:
