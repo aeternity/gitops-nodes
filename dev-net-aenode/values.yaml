@@ -23,6 +23,12 @@ aenode:
         paths:
           - path: "/"
             pathType: Prefix
+    tls:
+      - hosts:
+          - "dev-aenode.dev.aepps.com"
+        secretName: dev-net-aenode-cert
+    tls:
+
   tolerations:
   - key: "public"
     operator: "Equal"
