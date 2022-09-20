@@ -6,7 +6,7 @@ metadata:
   name: {{ .name }}
 data:
     {{ $key }}: |
-    {{ .data  | nindent 4 }}
+    {{ .data  | nindent 6 }}
 ---
 {{- end }}
 {{- end }}
