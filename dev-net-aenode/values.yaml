@@ -18,7 +18,7 @@ aenode:
     hosts:
       - host: "dev-aenode.dev.aepps.com" # has to be changed/disscused
         paths:
-#          - path: "/"
+          - path: "/"
   tolerations:
   - key: "public"
     operator: "Equal"
