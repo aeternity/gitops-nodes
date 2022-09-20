@@ -2,8 +2,8 @@ aenode:
   image:
     repository: aeternity/aeternity
     tag: v6.5.2
-  type: StatefullSeta
-  replicaCount: 3
+  type: StatefullSet
+  replicaCount: 1
   podSecurityContext:
     fsGroup: 1000
   service:
