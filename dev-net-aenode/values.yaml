@@ -27,7 +27,6 @@ aenode:
       - hosts:
           - "dev-aenode.dev.aepps.com"
         secretName: dev-net-aenode-cert
-    tls:
 
   tolerations:
   - key: "public"
