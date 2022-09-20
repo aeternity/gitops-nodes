@@ -42,7 +42,7 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
 {{- range $key, $value := .Values.configmaps.maps }}
-        - name: {{ $key }}
+        - name: {{ $key | replace "." "-"}}
           configMap:
             name: {{ $key }}
 {{- end }}
@@ -63,7 +63,7 @@ spec:
 #          - name: data
 #            mountPath: /data
 {{- range $key, $value := .Values.configmaps.maps }}
-          - name: {{ $key }}
+          - name: {{ $key | replace "." "-" }}
             mountPath: /home/aeternity/node/{{ $key }}
             subPath: {{ $key }}
 {{- end }}
