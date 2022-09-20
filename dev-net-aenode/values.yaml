@@ -17,6 +17,7 @@ aenode:
     enabled: "true"
     hosts:
       - host: "dev-aenode.dev.aepps.com" # has to be changed/disscused
+        pathType: Prefix
         paths:
           - path: "/"
   tolerations:
