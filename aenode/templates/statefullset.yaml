@@ -43,7 +43,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: aeternity
+            name: aeternity.yaml
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
