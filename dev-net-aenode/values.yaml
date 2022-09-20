@@ -1,4 +1,4 @@
-app:
+aenode:
   image:
     repository: aeternity/aeternity
     tag: v6.5.2
