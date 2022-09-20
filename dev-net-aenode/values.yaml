@@ -13,11 +13,11 @@ aenode:
       cpu: 1.2
     requests:
       cpu: 1.1
-#  ingress:
-#    enabled: "true"
-#    hosts:
-#      - host: "dev-aenode.dev.aepps.com" # has to be changed/disscused
-#        paths:
+  ingress:
+    enabled: "true"
+    hosts:
+      - host: "dev-aenode.dev.aepps.com" # has to be changed/disscused
+        paths:
 #          - path: "/"
   tolerations:
   - key: "public"
