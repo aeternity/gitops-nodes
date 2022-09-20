@@ -15,6 +15,9 @@ aenode:
       cpu: 1.1
   ingress:
     enabled: "true"
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+      cert-manager.io/cluster-issuer: "letsencrypt"
     hosts:
       - host: "dev-aenode.dev.aepps.com" # has to be changed/disscused
         paths:
