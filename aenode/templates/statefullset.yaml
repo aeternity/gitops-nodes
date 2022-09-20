@@ -41,9 +41,11 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
-        - name: config-volume
+{{- range $key, $value := .Values.configmaps.maps }}
+        - name: {{ $key }}
           configMap:
-            name: aeternity.yaml
+            name: {{ $key }}
+{{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -60,9 +62,11 @@ spec:
           volumeMounts:
 #          - name: data
 #            mountPath: /data
-          - name: config-volume
-            mountPath: /home/aeternity/node/aeternity.yaml
-            subPath: aeternity.yaml
+{{- range $key, $value := .Values.configmaps.maps }}
+          - name: {{ $key }}
+            mountPath: /home/aeternity/node/{{ $key }}
+            subPath: {{ $key }}
+{{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
