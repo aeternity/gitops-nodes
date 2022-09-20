@@ -81,6 +81,6 @@ aenode:
               max_outbound: 30
               port: 3015
 
-      aeternity.json:
+      aeternity.example:
         data: |
           {"somefile":"awesome"}
