@@ -29,3 +29,13 @@ aenode:
   nodeport: "no"
   testing:
     enabled: true
+  configmaps:
+    enabled: true
+    map:
+      aeternity-yaml:
+        data:
+          chain:
+            garbage_collection:
+              enabled: true
+              history: 500
+              interval: 480
