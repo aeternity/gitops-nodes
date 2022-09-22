@@ -82,3 +82,6 @@ tolerations: []
 affinity: {}
 
 type: Deployment
+
+configmaps:
+  enabled: false
