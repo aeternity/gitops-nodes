@@ -1,31 +1,13 @@
-app:
+aenode:
   image:
     repository: aeternity/aeternity
     tag: v6.5.2
-  type: StatefullSeta
-  replicaCount: 3
+  type: StatefullSet
+  replicaCount: 1
   podSecurityContext:
     fsGroup: 1000
-  service:
-    port: 3013
   resources:
     limits:
       cpu: 1.2
     requests:
       cpu: 1.1
-#  ingress:
-#    enabled: "false"
-#    hosts:
-#      - host: "dev-hc-node.dev.aepps.com" # has to be changed/disscused
-#        paths:
-#          - path: "/"
-  tolerations:
-  - key: "public"
-    operator: "Equal"
-    value: "yes"
-    effect: "NoSchedule"
-  nodeSelector:
-    public: "yes"
-  nodeport: "no"
-  testing:
-    enabled: true
