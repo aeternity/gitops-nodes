@@ -29,12 +29,12 @@ aenode:
         secretName: dev-net-aenode-cert
 
   tolerations:
-  - key: "public"
+  - key: "aenodes"
     operator: "Equal"
     value: "yes"
     effect: "NoSchedule"
   nodeSelector:
-    public: "yes"
+    aenodes: "yes"
   nodeport: "no"
   testing:
     enabled: true

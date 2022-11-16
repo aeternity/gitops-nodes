@@ -12,9 +12,9 @@ aenode:
     requests:
       cpu: 1.1
   tolerations:
-  - key: "public"
+  - key: "aenodes"
     operator: "Equal"
     value: "yes"
     effect: "NoSchedule"
   nodeSelector:
-    public: "yes"
+    aenodes: "yes"
